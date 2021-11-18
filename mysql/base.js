@@ -16,4 +16,4 @@ connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
   console.log('The solution is: ', results[0].solution);
 });
  
-connection.end(); //结束链接
+connection.end(); //结束链接 
