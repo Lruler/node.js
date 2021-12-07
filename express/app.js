@@ -1,33 +1,34 @@
 const express = require('express')
+const memberRouter = require('./member.router')
 
 const app = express()
+/* 
+什么是中间件？
+1. 是一个函数
+2. err, req, res, next --> function
 
-// app.use((req, res) => {
-//     res.json({
-//         name: "nodenode"
-//     })
-// })
+中间件用来干什么？
+1. 处理异常
+2. 处理业务功能，然后转交控制权
+3. 当作路由的处理函数
+*/
 
-app.get('/name/:age', (req, res) => {
-    let { age } = req.params
-    res.json({
-        name: 'nodeJs',
-        age
-    })
-})
-app.post('/post', (req, res) => {
-    res.send('nodeJs post')
-})
-
-// 后端路由
-app.get('/user/name', (req, res) => {
+// 检测query参数是否有name的中间件
+const middlewareDemo = (req, res, next) => {
     let { name } = req.query
-    res.json({
-        name
-    })
-})
+    if (!name || !name.length) {
+        res.json({
+            message: "缺少name参数"
+        })
+    }
+    else next()
+}
 
-// app.all 可以忽略请求方式 app.use 使用中间件
-app.listen(3000, console.error(
-    console.log('Server启动成功')
-))
+// 使用中间件
+app.all("*", middlewareDemo)
+// 注册路由
+app.use('/member', memberRouter)
+
+app.listen(3000, () => {
+    console.log('Server success')
+})
