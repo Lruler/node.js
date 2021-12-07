@@ -6,3 +6,4 @@
 2. router级别 通过数组形式传入
 3. 异常处理（可以是router也可以是app级别
 
+# sequlize
