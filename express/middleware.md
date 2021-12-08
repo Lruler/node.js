@@ -10,3 +10,5 @@
 sequlize-cil mysql2
 
 node app --> ORM(sequlize) --> 驱动(node-mysql/mysql2) -->mysql db
+
+# pm2 开启运维服务
