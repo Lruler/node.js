@@ -7,3 +7,6 @@
 3. 异常处理（可以是router也可以是app级别
 
 # sequlize
+sequlize-cil mysql2
+
+node app --> ORM(sequlize) --> 驱动(node-mysql/mysql2) -->mysql db
